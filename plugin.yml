@@ -1,0 +1,8 @@
+name: OmniPackets
+main: net.omniblock.packets.OmniPackets
+loadbefore: [OmniNetwork]
+load: STARTUP
+author: Omniblock Developers Team
+version: 1.9.2A.universal
+description: Plugin principal para la administración de paquetes de Omniblock Network.
+website: www.omniblock.net
