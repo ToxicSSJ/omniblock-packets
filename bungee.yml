@@ -1,0 +1,6 @@
+name: OmniPackets
+main: net.omniblock.packets.OmniPacketsCord
+load: SETUP
+version: 1.9.2A.universal
+author: Omniblock Developers Team
+website: www.omniblock.net
