@@ -61,7 +61,7 @@ public class SocketHelper {
 		if(sender == PacketSenderType.OMNICORE) return OMNICORE_SOCKET_PORT;
 		if(sender == PacketSenderType.OMNICORD) return OMNICORD_SOCKET_PORT;
 		if(sender == PacketSenderType.OMNIDISCORD) return OMNIDISCORD_SOCKET_PORT;
-		
+
 		return OMNICORE_SOCKET_PORT;
 		
 	}

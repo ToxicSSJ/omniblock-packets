@@ -5,6 +5,9 @@ import java.io.Serializable;
 import net.omniblock.packets.network.structure.data.PacketSocketData;
 import net.omniblock.packets.network.structure.type.PacketType;
 
+import java.util.logging.Level;
+import net.omniblock.packets.network.Packets;
+
 /**
  * 
  * Esta clase es la base para los paquetes
@@ -32,6 +35,8 @@ public class MessagePacket implements Serializable {
 	 * los tipos de paquetes posibles.
 	 */
 	public MessagePacket(PacketType type){
+		
+		Packets.DEBUGGER.sendMessage("Se ha fabricado un paquete tipo " + type.name(), Level.INFO);
 		
 		this.type = type;
 		return;

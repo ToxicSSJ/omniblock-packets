@@ -5,9 +5,7 @@ public enum SystemType {
 	OMNICORE,
 	OMNICORD,
 	OMNINETWORK,
-	
 	OMNIDISCORD,
-	
 	;
 	
 }
