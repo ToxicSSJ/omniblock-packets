@@ -13,6 +13,7 @@ import net.omniblock.packets.network.structure.MessagePacket;
 import net.omniblock.packets.network.structure.data.PacketSocketData;
 import net.omniblock.packets.network.structure.data.PacketSocketData.PacketSocketDataHandler;
 import net.omniblock.packets.network.structure.type.PacketShowType;
+import net.omniblock.packets.network.structure.type.PacketType;
 import net.omniblock.packets.network.tool.object.PacketResponder;
 import net.omniblock.packets.object.exception.InvalidSystemException;
 
@@ -54,22 +55,22 @@ public class PacketStreamerHandler {
 	 * definido dentro del PacketSocketData.
 	 * 
 	 * @param data La data que será enviada.
+	 * @return El status del envio del paquete.
 	 * @see PacketSocketData
 	 */
-	public void streamPacket(PacketSocketData data){
+	public DataSenderStatus streamPacket(PacketSocketData data){
 		
 		if(!OmniPackets.isStarted()) throw new InvalidSystemException("El sistema actual no es valido, ¿Se inició OmniPackets#setupSystem()?");
 		if(data.getPacket().getPacketType().getShow() == PacketShowType.RESPOSE) throw new RuntimeException("El paquete que se intenta enviar es de tipo respuesta, Use en dicho caso el metodo PacketStreamerHandler#streamPacketAndRespose(PacketSocketData)!");
-		if(data.isCancelled()) return;
-		if(data.getReceiver() == null) return;
+		if(data.isCancelled()) return DataSenderStatus.CANCELLED;
+		if(data.getReceiver() == null) return DataSenderStatus.NOT_RECEIVER;
 		
 		Integer receiver = data.getReceiver();
 		String serialized = PacketSocketDataHandler.serialize(data);
 		
 		Packets.DEBUGGER.sendMessage("Se esta enviando un paquete " + data.getPacket().getPacketType() + " al receptor " + receiver, Level.INFO);
 		
-		sendSocketData(serialized, receiver);
-		return;
+		return sendSocketData(data.getPacket().getPacketType(), serialized, receiver);
 		
 	}
 	
@@ -87,14 +88,15 @@ public class PacketStreamerHandler {
 	 * @param data La data que será enviada.
 	 * @param responder La instancia con el metodo
 	 * de respuesta.
+	 * @return El status del envio del paquete.
 	 * @see PacketSocketData
 	 */
-	public void streamPacketAndRespose(PacketSocketData data, PacketResponder<? extends MessagePacket> responder){
+	public DataSenderStatus streamPacketAndRespose(PacketSocketData data, PacketResponder<? extends MessagePacket> responder){
 		
 		if(!OmniPackets.isStarted()) throw new InvalidSystemException("El sistema actual no es valido, ¿Se inició OmniPackets#setupSystem()?");
 		if(data.getPacket().getPacketType().getShow() == PacketShowType.ACTION) throw new RuntimeException("El paquete que se intenta enviar es de tipo acción, Use en dicho caso el metodo PacketStreamerHandler#streamPacket(PacketSocketData)!");
-		if(data.isCancelled()) return;
-		if(data.getReceiver() == null) return;
+		if(data.isCancelled()) return DataSenderStatus.CANCELLED;
+		if(data.getReceiver() == null) return DataSenderStatus.NOT_RECEIVER;
 		
 		Integer receiver = data.getReceiver();
 		String serialized = PacketSocketDataHandler.serialize(data);
@@ -102,8 +104,8 @@ public class PacketStreamerHandler {
 		Packets.DEBUGGER.sendMessage("Se esta enviando un paquete tipo respuesta " + data.getPacket().getPacketType() + " al receptor " + receiver, Level.INFO);
 		
 		registerResponder(responder, data.getPacketUUID());
-		sendSocketData(serialized, receiver);
-		return;
+		
+		return sendSocketData(data.getPacket().getPacketType(), serialized, receiver);
 		
 	}
 	
@@ -138,9 +140,9 @@ public class PacketStreamerHandler {
 	 * @param receiver El puerto donde será enviada.
 	 * @return El estado del paquete.
 	 */
-	private DataSenderStatus sendSocketData(String data, Integer receiver){
+	private DataSenderStatus sendSocketData(PacketType type, String data, Integer receiver){
 		
-		return Sockets.CLIENT.sendData(data, receiver);
+		return Sockets.CLIENT.sendData(type, data, receiver);
 		
 	}
 	

@@ -8,6 +8,7 @@ import java.net.UnknownHostException;
 import net.omniblock.packets.network.socket.helper.SocketHelper;
 import net.omniblock.packets.network.socket.type.DataSenderStatus;
 import net.omniblock.packets.network.structure.type.PacketSenderType;
+import net.omniblock.packets.network.structure.type.PacketType;
 
 /**
  * 
@@ -27,9 +28,9 @@ public class ClientSocketAdapter {
 	 * @param sender El tipo de receptor que se espera que lea los datos.
 	 * @return El estado del envio por medio de un enumerador.
 	 */
-	public DataSenderStatus sendData(String data, PacketSenderType sender) {
+	public DataSenderStatus sendData(PacketType type, String data, PacketSenderType sender) {
 		
-		return sendData(data, SocketHelper.getReceiverPort(sender));
+		return sendData(type, data, SocketHelper.getReceiverPort(sender));
 		
 	}
 	
@@ -41,7 +42,7 @@ public class ClientSocketAdapter {
 	 * @param port El puerto local abierto al cual se le enviarán dichos datos.
 	 * @return El estado del envio por medio de un enumerador.
 	 */
-	public DataSenderStatus sendData(String data, int port) {
+	public DataSenderStatus sendData(PacketType type, String data, int port) {
 		
 		try {
 			
@@ -56,11 +57,12 @@ public class ClientSocketAdapter {
 			
 		} catch (UnknownHostException e1) {
 			
-			e1.printStackTrace();
+			System.out.println("No se ha podido reconocer el host al que se intenta enviar el paquete tipo '" + type.name() + "'.");
 			
 		} catch (IOException e1) {
 			
-			e1.printStackTrace();
+			System.out.println("Ha ocurrido un error I/O al enviar el paquete tipo '" + type.name() + "'.");
+			
 		}
 		
 		return DataSenderStatus.ERROR;

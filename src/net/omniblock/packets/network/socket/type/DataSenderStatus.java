@@ -12,6 +12,9 @@ package net.omniblock.packets.network.socket.type;
 public enum DataSenderStatus {
 	
 	SENDED,
+	
+	CANCELLED,
+	NOT_RECEIVER,
 	ERROR,
 	
 	;
