@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Omniblock-Packets:jar">
+    <output-path>C:/Java/OmniBlock</output-path>
+    <root id="archive" name="OmniblockPackets.jar">
+      <element id="module-output" name="Omniblock-Packets" />
+    </root>
+  </artifact>
+</component>
