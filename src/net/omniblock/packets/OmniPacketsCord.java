@@ -13,7 +13,7 @@ public class OmniPacketsCord extends Plugin {
 	 */
 	@Override
 	public void onEnable() {
-		
+
     	System.out.println("Inicializado OmniPackets desde el framework de BungeeCord!");
     	return;
     	
