@@ -27,11 +27,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../Libs/spigot-1.8-R0.1-SNAPSHOT.jar!/" />
+          <root url="jar://$MODULE_DIR$/../Libs/Spigot_1_8_R3.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/../Libs/spigot-1.8-R0.1-SNAPSHOT.jar!/" />
+          <root url="jar://$MODULE_DIR$/../Libs/Spigot_1_8_R3.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
