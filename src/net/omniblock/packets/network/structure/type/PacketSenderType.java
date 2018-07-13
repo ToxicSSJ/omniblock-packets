@@ -15,6 +15,7 @@ public enum PacketSenderType {
 	ANY,
 	OMNIDISCORD,
 	OMNICORD,
+	SYSTEMCORE,
 	OMNICORE,
 	OMNINETWORK,
 	

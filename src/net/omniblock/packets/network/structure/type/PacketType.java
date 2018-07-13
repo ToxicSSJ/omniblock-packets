@@ -25,9 +25,13 @@ public enum PacketType {
 	REQUEST_PLAYER_START_NETWORK_BOOSTER(PacketShowType.RESPOSE, PacketSenderType.ANY),
 	
 	REQUEST_ACTION_EXECUTOR(PacketShowType.RESPOSE, PacketSenderType.ANY),
-	
+
 	SERVER_STRUCTURE_INFO(PacketShowType.ACTION, PacketSenderType.OMNICORE),
-	GAME_STRUCTURE_INFO(PacketShowType.ACTION, PacketSenderType.OMNICORE),
+	SERVER_REGISTER_SYSTEM(PacketShowType.ACTION, PacketSenderType.SYSTEMCORE),
+	SERVER_REMOVE_SYSTEM(PacketShowType.ACTION, PacketSenderType.SYSTEMCORE),
+	SERVER_SEND_TO_DATA(PacketShowType.ACTION, PacketSenderType.SYSTEMCORE),
+	GAME_SHOP_INFO(PacketShowType.ACTION, PacketSenderType.SYSTEMCORE),
+	GAME_STRUCTURE_INFO(PacketShowType.ACTION, PacketSenderType.SYSTEMCORE),
 	
 	SERVER_SOCKET_INFO(PacketShowType.ACTION, PacketSenderType.OMNINETWORK),
 	SERVER_REMOVE_INFO(PacketShowType.ACTION, PacketSenderType.OMNINETWORK),

@@ -38,6 +38,8 @@ public class SocketHelper {
 	 * 
 	 */
 	public static final int OMNIDISCORD_SOCKET_PORT = 8010;
+
+	public static final int SYSTEMCORE_SOCKET_PORT = 8015;
 	
 	/**
 	 * 
@@ -59,6 +61,7 @@ public class SocketHelper {
 	public static int getReceiverPort(PacketSenderType sender){
 		
 		if(sender == PacketSenderType.OMNICORE) return OMNICORE_SOCKET_PORT;
+		if(sender == PacketSenderType.SYSTEMCORE) return  SYSTEMCORE_SOCKET_PORT;
 		if(sender == PacketSenderType.OMNICORD) return OMNICORD_SOCKET_PORT;
 		if(sender == PacketSenderType.OMNIDISCORD) return OMNIDISCORD_SOCKET_PORT;
 
