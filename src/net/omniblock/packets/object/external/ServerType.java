@@ -2,6 +2,8 @@ package net.omniblock.packets.object.external;
 
 public enum ServerType {
 
+	ARCADE_GAME_SERVER("ARCGS"),
+
 	MAIN_AUTH_SERVER("AUTH"),
 	MAIN_LOBBY_SERVER("LOBBY"),
 	
