@@ -3,6 +3,7 @@ package net.omniblock.packets.object.external;
 public enum Kind {
 
 	DEFAULT,
+	NORMAL,
 	RARE,
 	SEASON,
 	VIP;

@@ -10,16 +10,22 @@ import java.lang.reflect.Field;
 public class GameShopInfoPacket extends MessagePacket {
 
 	protected String servertype;
+	protected String section;
 
 	public GameShopInfoPacket() {
 		super(PacketType.GAME_SHOP_INFO);
 	}
 
-
 	public GameShopInfoPacket setServer(ServerType servertype){
 
 		this.servertype = servertype.toString();
 		return  this;
+	}
+
+	public GameShopInfoPacket setSection(String section){
+
+		this.section = section;
+		return this;
 	}
 
 
